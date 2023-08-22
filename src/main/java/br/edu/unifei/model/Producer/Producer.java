@@ -1,38 +1,49 @@
-package br.edu.unifei.model;
+package br.edu.unifei.model.Producer;
 
 import javax.jms.Connection;
 import javax.jms.DeliveryMode;
 import javax.jms.Destination;
+import javax.jms.JMSException;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
-import javax.jms.TextMessage;
+import javax.jms.Message;
 
-public class Producer {
+public abstract class Producer<T> {
     private final Connection conn;
     private final String topic;
 
     public Producer(Connection conn, String topic) {
         this.conn = conn;
         this.topic = topic;
+
     }
 
-    public void sendMessage(String txt) {
+    public void send(T obj) {
         try {
             Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
             Destination destination = session.createTopic(topic);
 
             MessageProducer producer = session.createProducer(destination);
-            producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
+            producer.setDeliveryMode(DeliveryMode.PERSISTENT);
 
-            String text = "[" + Thread.currentThread().getName() + " : " + this.hashCode() + ": " +  " " + txt;
-            TextMessage message = session.createTextMessage(text);
+            Message message = createMessage(session, obj);
 
             producer.send(message);
             session.close();
         }
         catch (Exception e) {
             System.out.println("Caught: " + e);
+            e.printStackTrace();
+        }
+    }
+
+    public abstract Message createMessage(Session session, T obj) throws JMSException;
+
+    public void close() {
+        try {
+            conn.close();
+        } catch (JMSException e) {
             e.printStackTrace();
         }
     }
