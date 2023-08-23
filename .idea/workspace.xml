@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8a4299d-85a3-4f0e-ab03-6a4b51191653" name="Changes" comment="" />
+    <list default="true" id="b8a4299d-85a3-4f0e-ab03-6a4b51191653" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/unifei/factory/Activemq.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/edu/unifei/factory/Activemq.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,6 +63,9 @@
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
+      <envs>
+        <env name="BROKER" value="tcp://localhost:61616" />
+      </envs>
       <option name="MAIN_CLASS_NAME" value="br.edu.unifei.Main" />
       <module name="Example-JMS" />
       <extension name="coverage">
@@ -88,6 +94,8 @@
       <workItem from="1692730926331" duration="5954000" />
       <workItem from="1692741912456" duration="5519000" />
       <workItem from="1692789416104" duration="2100000" />
+      <workItem from="1692828362126" duration="104000" />
+      <workItem from="1692828766276" duration="302000" />
     </task>
     <task id="LOCAL-00001" summary="🤝 - Create consumer for 3 types of messages">
       <created>1692791428651</created>

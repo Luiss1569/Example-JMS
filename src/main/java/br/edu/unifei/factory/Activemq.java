@@ -18,7 +18,7 @@ public class Activemq {
 
     static private Connection createConnection() {
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
-        connectionFactory.setBrokerURL("tcp://localhost:61616");
+        connectionFactory.setBrokerURL(System.getenv("BROKER"));
         try {
             Connection con = connectionFactory.createConnection();
             con.start();
