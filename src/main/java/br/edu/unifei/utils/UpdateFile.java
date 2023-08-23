@@ -1,14 +1,13 @@
 package br.edu.unifei.utils;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class UpdateFile {
     private String path = "./";
-    private String fileName;
+    private final String fileName;
 
     public UpdateFile(String fileName) {
         this.fileName = fileName;
@@ -20,7 +19,7 @@ public class UpdateFile {
         this.fileName = fileName;
     }
 
-    public void update(String content) throws IOException {
+    public void update(String content) {
         File arq = new File(path + fileName);
 
         try {
